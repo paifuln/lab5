@@ -1,15 +1,19 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main(int argc, char** argv){
-    float a[10];
-    
+int main() {
 
-    for (int i = 0; i<10; i++){
-        a[i] = atof(argv[i+1]);
-    }
-    for (int i=9; i>=0; i--){
-        printf("%.2f\n", a[i]);
-    }
+ double array[10];
 
+ for (int i = 0; i < 10; i++) {
+  scanf("%lf", &array[i]);
+ }
+
+ for (int i = 9; i >= 0; i--) {
+  if (i == 0) {
+   printf("%lf", array[i]);
+  }
+  else {
+   printf("%lf ", array[i]);
+  }
+ }
 }
