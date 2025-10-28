@@ -1,32 +1,49 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main() {
-    int A[10][3] = {
-        {1,2,3},{4,5,6},{7,8,9},{10,11,12},{13,14,15},
-        {16,17,18},{19,20,21},{22,23,24},{25,26,27},{28,29,30}
-    };
-    int B[3][10] = {
-        {1,2,3,4,5,6,7,8,9,10},
-        {11,12,13,14,15,16,17,18,19,20},
-        {21,22,23,24,25,26,27,28,29,30}
-    };
-    int C[10][10] = {0};
+#define ROWS_A 10
+#define COLS_A 3
+#define ROWS_B 3
+#define COLS_B 10
 
-    // Умножение матриц A (10x3) и B (3x10)
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-            int sum = 0;
-            for (int k = 0; k < 3; k++) {
-                sum += A[i][k] * B[k][j];
-            }
-            C[i][j] = sum;
+int main(int argc, char** argv) {
+
+    double matrixA[ROWS_A][COLS_A];
+    double matrixB[ROWS_B][COLS_B];
+    double result[ROWS_A][COLS_B];
+
+    for (int i = 0; i < ROWS_A; i++) {
+        for (int j = 0; j < COLS_A; j++) {
+            scanf("%lf", &matrixA[i][j]);
         }
     }
 
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-            printf("%d ", C[i][j]);
+    for (int i = 0; i < ROWS_B; i++) {
+        for (int j = 0; j < COLS_B; j++) {
+            scanf("%lf", &matrixB[i][j]);
         }
+    }
+
+    for (int i = 0; i < ROWS_A; i++) {
+        for (int j = 0; j < COLS_B; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < COLS_A; k++) {
+                result[i][j] += matrixA[i][k] * matrixB[k][j];
+            }
+        }
+    }
+
+    for (int i = 0; i < ROWS_A; i++) {
+        for (int j = 0; j < COLS_B; j++) {
+            printf("%lf", result[i][j]);
+            if (i != ROWS_A - 1 || j != COLS_B - 1) {
+                printf(" ");
+            }
+        }
+    }
+
+    return 0;
+}
     }
     printf("\n");
 
