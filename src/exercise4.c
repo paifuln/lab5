@@ -1,21 +1,34 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 #define SIZE 10
 
-int main() {
+int main(int argc, char** argv) {
     double array[SIZE];
-    double x;
-    int k;
-
-    for (int i = 0; i < SIZE; i++)
+    double finalArray[SIZE];
+    int x = atoi(argv[1]);
+    int k = atoi(argv[2]);
+    for (int i = 0; i < SIZE; i++) {
         scanf("%lf", &array[i]);
-    scanf("%lf%d", &x, &k);
-
-    for (int i = SIZE - 1; i > k; i--)
-        array[i] = array[i - 1];
-
-    array[k] = x;
-
-    for (int i = 0; i < SIZE; i++)
-        printf("%.0lf ", array[i]);
+    }
+    for (int i = 0; i < SIZE; i++) {
+        if (i < k) {
+            finalArray[i] = array[i];
+        }
+        else if (i == k) {
+            finalArray[i] = x;
+        }
+        else {
+            finalArray[i] = array[i - 1];
+        }
+    }
+    for (int i = 0; i < SIZE; i++) {
+        if (i == SIZE - 1) {
+            printf("%lf", finalArray[i]);
+        }
+        else {
+            printf("%lf ", finalArray[i]);
+        }
+    }
     return 0;
 }
