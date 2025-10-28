@@ -15,3 +15,4 @@ int main(int argc, char** argv){
     }
     printf("%.3f", sum/10);
     return 0;
+}
